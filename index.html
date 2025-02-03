@@ -1,188 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Transmit PIREP (Expanded)</title>
-    <style>
-        .form-container {
-            position: relative;
-            /* Adjust width/height to match your actual image dimensions */
-            width: 692px; 
-            height: 754px;
-            background: url('transmit_pirep_expanded.png') no-repeat;
-            background-size: contain; /* or 'cover' if you prefer */
-            margin: 0 auto; /* center the form horizontally */
-        }
-        /* A helper class for inputs so we don’t repeat 'position: absolute' */
-        .form-field {
-            position: absolute;
-            font-size: 14px; 
-        }
-        /* Example positions – adjust as needed */
-        .accountable-facility {
-            left: 100px; 
-            top: 10px; 
-            width: 150px;
-        }
-        .pilot-report-type {
-            left: 400px; 
-            top: 10px; 
-            width: 60px;
-        }
-        .override-validation {
-            left: 480px; 
-            top: 12px;
-        }
-        .phenomena-location {
-            left: 100px; 
-            top: 50px; 
-            width: 150px;
-        }
-        .phenomena-time {
-            left: 100px; 
-            top: 90px; 
-            width: 100px;
-        }
-        .flight-level {
-            left: 250px; 
-            top: 90px; 
-            width: 50px;
-        }
-        .aircraft-type {
-            left: 350px; 
-            top: 90px; 
-            width: 100px;
-        }
-        .sky-condition {
-            left: 100px; 
-            top: 130px; 
-            width: 300px;
-        }
-        .flight-visibility {
-            left: 100px; 
-            top: 170px; 
-            width: 300px;
-        }
-        .temperature {
-            left: 100px; 
-            top: 210px; 
-            width: 300px;
-        }
-        .wind-velocity {
-            left: 100px; 
-            top: 250px; 
-            width: 300px;
-        }
-        .turbulence {
-            left: 100px; 
-            top: 290px; 
-            width: 300px;
-        }
-        .icing {
-            left: 100px; 
-            top: 330px; 
-            width: 300px;
-        }
-        .pilot-remarks {
-            left: 100px; 
-            top: 370px; 
-            width: 400px;
-        }
-        .braking-action {
-            left: 100px; 
-            top: 440px; 
-            width: 300px;
-        }
-        /* Braking Action Info */
-        .runway {
-            left: 100px;
-            top: 500px;
-            width: 60px;
-        }
-        .runway-braking-action {
-            left: 170px;
-            top: 500px;
-            width: 100px;
-        }
-        .runway-contaminant {
-            left: 280px;
-            top: 500px;
-            width: 100px;
-        }
-        .runway-depth {
-            left: 390px;
-            top: 500px;
-            width: 50px;
-        }
-        .taxiway {
-            left: 100px;
-            top: 540px;
-            width: 60px;
-        }
-        .taxiway-braking-action {
-            left: 170px;
-            top: 540px;
-            width: 100px;
-        }
-        .taxiway-contaminant {
-            left: 280px;
-            top: 540px;
-            width: 100px;
-        }
-        .taxiway-depth {
-            left: 390px;
-            top: 540px;
-            width: 50px;
-        }
-        /* Buttons */
-        .form-buttons {
-            position: absolute;
-            left: 300px;
-            top: 700px;
-        }
-    </style>
+  <meta charset="utf-8">
+  <title>Transmit PIREP (Expanded)</title>
+  <style>
+    .form-container {
+      /* Change these values to match the actual dimensions of your image.png */
+      width: 692px;
+      height: 754px;
+      position: relative;
+      /* Replace image.png with the actual filename/path if different */
+      background: url('image.png') no-repeat;
+      /* To keep aspect ratio, you might use 'cover' or 'contain' */
+      background-size: contain; 
+      /* Center the container on the page if desired */
+      margin: 0 auto; 
+      border: 1px solid #ccc; /* optional border so you can see the container */
+    }
+    
+    .form-field {
+      position: absolute;
+      font-size: 14px;
+      /* Adjust styling as needed */
+    }
+    /* Example positions (completely arbitrary — adjust top/left to line up with your image) */
+    .accountable-facility {
+      left: 100px;
+      top: 15px;
+      width: 150px;
+    }
+    .pilot-report-type {
+      left: 400px;
+      top: 15px;
+      width: 60px;
+    }
+    .override-validation {
+      left: 480px; 
+      top: 20px;
+    }
+    /* ...and so on for each field... */
+    
+    .transmit-button {
+      position: absolute;
+      left: 300px;
+      top: 700px;
+    }
+    .cancel-button {
+      position: absolute;
+      left: 380px;
+      top: 700px;
+    }
+  </style>
 </head>
 <body>
-    <div class="form-container">
-        <input type="text" name="accountableFacility" class="form-field accountable-facility" placeholder="Accountable Facility">
-        
-        <select name="pilotReportType" class="form-field pilot-report-type">
-            <option value="UA">UA</option>
-            <option value="UUA">UUA</option>
-        </select>
-        
-        <!-- example checkbox for override validation -->
-        <input type="checkbox" name="overrideValidation" class="form-field override-validation" title="Override Validation">
-        
-        <input type="text" name="phenomenaLocation" class="form-field phenomena-location" placeholder="/OV">
-        <input type="text" name="phenomenaTime" class="form-field phenomena-time" placeholder="/TM">
-        <input type="text" name="flightLevel" class="form-field flight-level" placeholder="/FL">
-        <input type="text" name="aircraftType" class="form-field aircraft-type" placeholder="/TP">
-        
-        <input type="text" name="skyCondition" class="form-field sky-condition" placeholder="/SK">
-        <input type="text" name="flightVisibility" class="form-field flight-visibility" placeholder="/WX">
-        <input type="text" name="temperature" class="form-field temperature" placeholder="/TA">
-        <input type="text" name="windVelocity" class="form-field wind-velocity" placeholder="/WV">
-        <input type="text" name="turbulence" class="form-field turbulence" placeholder="/TB">
-        <input type="text" name="icing" class="form-field icing" placeholder="/IC">
-        <input type="text" name="pilotRemarks" class="form-field pilot-remarks" placeholder="/RM">
-        <input type="text" name="brakingAction" class="form-field braking-action" placeholder="/BA">
-        
-        <!-- Braking Action Info -->
-        <input type="text" name="runway" class="form-field runway" placeholder="Runway">
-        <input type="text" name="runwayBrakingAction" class="form-field runway-braking-action" placeholder="Braking Action">
-        <input type="text" name="runwayContaminant" class="form-field runway-contaminant" placeholder="Contaminant">
-        <input type="text" name="runwayDepth" class="form-field runway-depth" placeholder="Depth">
-        
-        <input type="text" name="taxiway" class="form-field taxiway" placeholder="Taxiway/Apron">
-        <input type="text" name="taxiwayBrakingAction" class="form-field taxiway-braking-action" placeholder="Braking Action">
-        <input type="text" name="taxiwayContaminant" class="form-field taxiway-contaminant" placeholder="Contaminant">
-        <input type="text" name="taxiwayDepth" class="form-field taxiway-depth" placeholder="Depth">
-        
-        <div class="form-buttons">
-            <input type="submit" value="Transmit">
-            <input type="button" value="Cancel">
-        </div>
-    </div>
+
+  <div class="form-container">
+    <!-- Just an example; wrap in a <form> if you want to post data somewhere -->
+    <!-- Example fields -->
+    <input type="text" name="accountableFacility" class="form-field accountable-facility" placeholder="Accountable Facility">
+    <select name="pilotReportType" class="form-field pilot-report-type">
+      <option value="UA">UA</option>
+      <option value="UUA">UUA</option>
+    </select>
+    <input type="checkbox" name="overrideValidation" class="form-field override-validation" title="Override Validation">
+    
+    <!-- More fields as needed... -->
+    
+    <button type="submit" class="form-field transmit-button">Transmit</button>
+    <button type="button" class="form-field cancel-button">Cancel</button>
+  </div>
+  
 </body>
 </html>
