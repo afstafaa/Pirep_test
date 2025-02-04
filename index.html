@@ -1,79 +1,201 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>PIREP Form Example</title>
+  <meta charset="UTF-8">
+  <title>Transmit PIREP (Expanded)</title>
   <style>
+    /* ========== CONTAINER STYLING ========== */
     .form-container {
-      width: 692px;   /* match your image's dimensions */
-      height: 754px;  /* match your image's dimensions */
+      /* Make sure these match your image dimensions */
+      width: 692px;
+      height: 754px;
       position: relative;
       
-      /* Use your own path/filename if different */
+      /* Update with your actual image name/path */
       background: url("pirep.png") no-repeat;
       background-size: contain;
       
       margin: 0 auto; 
-      border: 1px solid #ccc; /* for debugging */
+      border: 1px solid #ccc; /* optional debug border */
     }
 
-    /* DEBUG STYLES: bright red borders so you can see the inputs. */
+    /* ========== DEBUG STYLING FOR FIELDS (REMOVE LATER) ========== */
     .form-field {
       position: absolute;
-      font-size: 16px;
-      background-color: rgba(255,255,255,0.7);
-      border: 2px solid red;
-      z-index: 10; /* on top of background */
-      padding: 4px;
+      font-size: 14px;
+      
+      /* TEMPORARY: helps see the boxes while you align them */
+      background-color: rgba(255,255,255,0.7); 
+      border: 2px solid red; 
+      z-index: 10; 
+      padding: 2px;
     }
 
-    /* Example text field */
+    /* ========== EXAMPLE POSITIONS (ADJUST!) ========== */
     .accountable-facility {
-      top: 35px;
-      left: 140px;
-      width: 100px;
+      top: 50px;    left: 50px;   width: 150px;
     }
-
-    /* Example select field */
     .pilot-report-type {
-      top: 100px;
-      left: 50px;
-      width: 80px;
+      top: 50px;    left: 220px;  width: 60px;
     }
-
-    /* Buttons */
+    .override-validation {
+      top: 54px;    left: 290px;  /* just an example checkbox */
+    }
+    .phenomena-location {
+      top: 90px;    left: 50px;   width: 100px;
+    }
+    .phenomena-time {
+      top: 90px;    left: 180px;  width: 60px;
+    }
+    .flight-level {
+      top: 90px;    left: 250px;  width: 60px;
+    }
+    .aircraft-type {
+      top: 90px;    left: 320px;  width: 100px;
+    }
+    .sky-condition {
+      top: 130px;   left: 50px;   width: 300px;
+    }
+    .flight-visibility {
+      top: 170px;   left: 50px;   width: 300px;
+    }
+    .temperature {
+      top: 210px;   left: 50px;   width: 300px;
+    }
+    .wind-velocity {
+      top: 250px;   left: 50px;   width: 300px;
+    }
+    .turbulence {
+      top: 290px;   left: 50px;   width: 300px;
+    }
+    .icing {
+      top: 330px;   left: 50px;   width: 300px;
+    }
+    .pilot-remarks {
+      top: 370px;   left: 50px;   width: 400px;
+    }
+    .braking-action {
+      top: 430px;   left: 50px;   width: 300px;
+    }
+    .runway {
+      top: 480px;   left: 50px;   width: 60px;
+    }
+    .runway-braking-action {
+      top: 480px;   left: 120px;  width: 100px;
+    }
+    .runway-contaminant {
+      top: 480px;   left: 230px;  width: 100px;
+    }
+    .runway-depth {
+      top: 480px;   left: 340px;  width: 50px;
+    }
+    .taxiway {
+      top: 520px;   left: 50px;   width: 60px;
+    }
+    .taxiway-braking-action {
+      top: 520px;   left: 120px;  width: 100px;
+    }
+    .taxiway-contaminant {
+      top: 520px;   left: 230px;  width: 100px;
+    }
+    .taxiway-depth {
+      top: 520px;   left: 340px;  width: 50px;
+    }
     .transmit-button {
-      top: 700px; 
-      left: 280px; 
-      width: 80px;
+      top: 700px;   left: 280px;  width: 80px;
     }
     .cancel-button {
-      top: 700px; 
-      left: 380px; 
-      width: 80px;
+      top: 700px;   left: 380px;  width: 80px;
     }
   </style>
 </head>
 <body>
+  <!-- Example form. You can adjust action/method if you want server submission -->
   <form action="#" method="POST">
     <div class="form-container">
-      <input 
-        type="text" 
-        name="accountableFacility" 
-        class="form-field accountable-facility"
-        placeholder="Accountable Facility">
       
+      <!-- 1) Accountable Facility -->
+      <input 
+        type="text"
+        name="accountableFacility"
+        class="form-field accountable-facility"
+        placeholder="Accountable Facility"
+      />
+
+      <!-- 2) Pilot Report Type -->
       <select 
-        name="pilotReportType" 
+        name="pilotReportType"
         class="form-field pilot-report-type"
       >
         <option value="UA">UA</option>
         <option value="UUA">UUA</option>
       </select>
-      
-      <button type="submit" class="form-field transmit-button">Transmit</button>
-      <button type="button" class="form-field cancel-button">Cancel</button>
-    </div>
-  </form>
-</body>
-</html>
+
+      <!-- 3) Override Validation (checkbox) -->
+      <input 
+        type="checkbox"
+        name="overrideValidation"
+        class="form-field override-validation"
+        title="Override Validation"
+      />
+
+      <!-- 4) Phenomena Location /OV -->
+      <input 
+        type="text"
+        name="phenomenaLocation"
+        class="form-field phenomena-location"
+        placeholder="/OV"
+      />
+
+      <!-- 5) Phenomena Time /TM -->
+      <input 
+        type="text"
+        name="phenomenaTime"
+        class="form-field phenomena-time"
+        placeholder="/TM"
+      />
+
+      <!-- 6) Flight Level /FL -->
+      <input 
+        type="text"
+        name="flightLevel"
+        class="form-field flight-level"
+        placeholder="/FL"
+      />
+
+      <!-- 7) Aircraft Type /TP -->
+      <input 
+        type="text"
+        name="aircraftType"
+        class="form-field aircraft-type"
+        placeholder="/TP"
+      />
+
+      <!-- 8) Sky Condition /SK -->
+      <input 
+        type="text"
+        name="skyCondition"
+        class="form-field sky-condition"
+        placeholder="/SK"
+      />
+
+      <!-- 9) Flight Visibility /WX -->
+      <input 
+        type="text"
+        name="flightVisibility"
+        class="form-field flight-visibility"
+        placeholder="/WX"
+      />
+
+      <!-- 10) Temperature /TA -->
+      <input 
+        type="text"
+        name="temperature"
+        class="form-field temperature"
+        placeholder="/TA"
+      />
+
+      <!-- 11) Wind Velocity /WV -->
+      <input 
+        type="text"
+  
