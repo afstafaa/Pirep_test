@@ -4,42 +4,44 @@
   <meta charset="utf-8">
   <title>PIREP Form Example</title>
   <style>
-    /* 1) Adjust these to match the actual dimensions of your image. */
     .form-container {
-      width: 692px;       /* match your image width */
-      height: 754px;      /* match your image height */
-      position: relative; /* so children can be absolutely positioned */
+      width: 692px;   /* match your image's dimensions */
+      height: 754px;  /* match your image's dimensions */
+      position: relative;
       
-      /* 2) Use your actual file name/path to pirep.png */
+      /* Use your own path/filename if different */
       background: url("pirep.png") no-repeat;
-      background-size: contain; /* or cover if you prefer */
+      background-size: contain;
       
-      /* optional styling/debug border */
       margin: 0 auto; 
-      border: 1px solid #ccc;
+      border: 1px solid #ccc; /* for debugging */
     }
-    
-    /* All form fields will be absolutely positioned inside .form-container. */
+
+    /* DEBUG STYLES: bright red borders so you can see the inputs. */
     .form-field {
       position: absolute;
-      font-size: 14px;
+      font-size: 16px;
+      background-color: rgba(255,255,255,0.7);
+      border: 2px solid red;
+      z-index: 10; /* on top of background */
+      padding: 4px;
     }
-    
-    /* Example: A text field for “Accountable Facility” */
+
+    /* Example text field */
     .accountable-facility {
-      top: 50px;    /* adjust to line up with the background */
-      left: 120px;  /* adjust to line up with the background */
-      width: 150px; /* adjust as needed */
+      top: 50px;   /* adjust as needed */
+      left: 50px;  /* adjust as needed */
+      width: 200px;
     }
 
-    /* Example: A select box for “Pilot Report Type” */
+    /* Example select field */
     .pilot-report-type {
-      top: 50px;
-      left: 300px;
-      width: 60px;
+      top: 100px;
+      left: 50px;
+      width: 80px;
     }
 
-    /* Example: Submit/Cancel buttons */
+    /* Buttons */
     .transmit-button {
       top: 700px; 
       left: 280px; 
@@ -53,18 +55,14 @@
   </style>
 </head>
 <body>
-  <!-- Wrap everything in a <form> so user inputs can be submitted somewhere -->
   <form action="#" method="POST">
     <div class="form-container">
-      <!-- Text field -->
       <input 
         type="text" 
         name="accountableFacility" 
-        class="form-field accountable-facility" 
-        placeholder="Accountable Facility"
-      >
+        class="form-field accountable-facility"
+        placeholder="Accountable Facility">
       
-      <!-- Select field -->
       <select 
         name="pilotReportType" 
         class="form-field pilot-report-type"
@@ -73,7 +71,6 @@
         <option value="UUA">UUA</option>
       </select>
       
-      <!-- Buttons -->
       <button type="submit" class="form-field transmit-button">Transmit</button>
       <button type="button" class="form-field cancel-button">Cancel</button>
     </div>
