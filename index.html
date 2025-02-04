@@ -2,41 +2,20 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>PIREP Form</title>
+  <title>PIREP Test</title>
   <style>
     .form-container {
-      /* Match the actual width/height of your pirep.png file */
-      width: 692px;
+      /* Must match your image's dimensions or bigger */
+      width: 692px; 
       height: 754px;
-      position: relative;
-      
-      /* Reference pirep.png (same folder) */
-      background: url('pirep.png') no-repeat;
-      /* Keep the image’s aspect ratio; can also use 'cover' */
-      background-size: contain;
-      
-      /* For visibility and testing */
-      margin: 0 auto; 
-      border: 1px solid #ccc; /* Optional debug border */
-    }
-
-    .form-field {
-      position: absolute;
-      font-size: 14px;
-    }
-
-    /* Example field—adjust top/left so it lines up with the correct spot in the image */
-    .example-field {
-      top: 50px;
-      left: 100px;
-      width: 200px;
+      background: url("pirep.png") no-repeat;
+      background-size: contain; 
+      margin: 0 auto;
+      border: 1px solid #ccc; /* optional for debugging */
     }
   </style>
 </head>
 <body>
-  <div class="form-container">
-    <input type="text" class="form-field example-field" placeholder="Example Field">
-    <!-- Add more fields similarly, adjusting top/left as needed -->
-  </div>
+  <div class="form-container"></div>
 </body>
 </html>
