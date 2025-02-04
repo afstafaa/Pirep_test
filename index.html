@@ -2,20 +2,81 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>PIREP Test</title>
+  <title>PIREP Form Example</title>
   <style>
+    /* 1) Adjust these to match the actual dimensions of your image. */
     .form-container {
-      /* Must match your image's dimensions or bigger */
-      width: 692px; 
-      height: 754px;
+      width: 692px;       /* match your image width */
+      height: 754px;      /* match your image height */
+      position: relative; /* so children can be absolutely positioned */
+      
+      /* 2) Use your actual file name/path to pirep.png */
       background: url("pirep.png") no-repeat;
-      background-size: contain; 
-      margin: 0 auto;
-      border: 1px solid #ccc; /* optional for debugging */
+      background-size: contain; /* or cover if you prefer */
+      
+      /* optional styling/debug border */
+      margin: 0 auto; 
+      border: 1px solid #ccc;
+    }
+    
+    /* All form fields will be absolutely positioned inside .form-container. */
+    .form-field {
+      position: absolute;
+      font-size: 14px;
+    }
+    
+    /* Example: A text field for “Accountable Facility” */
+    .accountable-facility {
+      top: 50px;    /* adjust to line up with the background */
+      left: 120px;  /* adjust to line up with the background */
+      width: 150px; /* adjust as needed */
+    }
+
+    /* Example: A select box for “Pilot Report Type” */
+    .pilot-report-type {
+      top: 50px;
+      left: 300px;
+      width: 60px;
+    }
+
+    /* Example: Submit/Cancel buttons */
+    .transmit-button {
+      top: 700px; 
+      left: 280px; 
+      width: 80px;
+    }
+    .cancel-button {
+      top: 700px; 
+      left: 380px; 
+      width: 80px;
     }
   </style>
 </head>
 <body>
-  <div class="form-container"></div>
+  <!-- Wrap everything in a <form> so user inputs can be submitted somewhere -->
+  <form action="#" method="POST">
+    <div class="form-container">
+      <!-- Text field -->
+      <input 
+        type="text" 
+        name="accountableFacility" 
+        class="form-field accountable-facility" 
+        placeholder="Accountable Facility"
+      >
+      
+      <!-- Select field -->
+      <select 
+        name="pilotReportType" 
+        class="form-field pilot-report-type"
+      >
+        <option value="UA">UA</option>
+        <option value="UUA">UUA</option>
+      </select>
+      
+      <!-- Buttons -->
+      <button type="submit" class="form-field transmit-button">Transmit</button>
+      <button type="button" class="form-field cancel-button">Cancel</button>
+    </div>
+  </form>
 </body>
 </html>
