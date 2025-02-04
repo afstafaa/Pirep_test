@@ -2,73 +2,41 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Transmit PIREP (Expanded)</title>
+  <title>PIREP Form</title>
   <style>
     .form-container {
-      /* Change these values to match the actual dimensions of your image.png */
+      /* Match the actual width/height of your pirep.png file */
       width: 692px;
       height: 754px;
       position: relative;
-      /* Replace image.png with the actual filename/path if different */
-      background: url('image.png') no-repeat;
-      /* To keep aspect ratio, you might use 'cover' or 'contain' */
-      background-size: contain; 
-      /* Center the container on the page if desired */
+      
+      /* Reference pirep.png (same folder) */
+      background: url('pirep.png') no-repeat;
+      /* Keep the image’s aspect ratio; can also use 'cover' */
+      background-size: contain;
+      
+      /* For visibility and testing */
       margin: 0 auto; 
-      border: 1px solid #ccc; /* optional border so you can see the container */
+      border: 1px solid #ccc; /* Optional debug border */
     }
-    
+
     .form-field {
       position: absolute;
       font-size: 14px;
-      /* Adjust styling as needed */
     }
-    /* Example positions (completely arbitrary — adjust top/left to line up with your image) */
-    .accountable-facility {
+
+    /* Example field—adjust top/left so it lines up with the correct spot in the image */
+    .example-field {
+      top: 50px;
       left: 100px;
-      top: 15px;
-      width: 150px;
-    }
-    .pilot-report-type {
-      left: 400px;
-      top: 15px;
-      width: 60px;
-    }
-    .override-validation {
-      left: 480px; 
-      top: 20px;
-    }
-    /* ...and so on for each field... */
-    
-    .transmit-button {
-      position: absolute;
-      left: 300px;
-      top: 700px;
-    }
-    .cancel-button {
-      position: absolute;
-      left: 380px;
-      top: 700px;
+      width: 200px;
     }
   </style>
 </head>
 <body>
-
   <div class="form-container">
-    <!-- Just an example; wrap in a <form> if you want to post data somewhere -->
-    <!-- Example fields -->
-    <input type="text" name="accountableFacility" class="form-field accountable-facility" placeholder="Accountable Facility">
-    <select name="pilotReportType" class="form-field pilot-report-type">
-      <option value="UA">UA</option>
-      <option value="UUA">UUA</option>
-    </select>
-    <input type="checkbox" name="overrideValidation" class="form-field override-validation" title="Override Validation">
-    
-    <!-- More fields as needed... -->
-    
-    <button type="submit" class="form-field transmit-button">Transmit</button>
-    <button type="button" class="form-field cancel-button">Cancel</button>
+    <input type="text" class="form-field example-field" placeholder="Example Field">
+    <!-- Add more fields similarly, adjusting top/left as needed -->
   </div>
-  
 </body>
 </html>
