@@ -29,83 +29,137 @@
       border: 2px solid red; 
       z-index: 10; 
       padding: 2px;
+      box-sizing: border-box; /* helps with consistent sizing */
     }
 
     /* ========== EXAMPLE POSITIONS (ADJUST!) ========== */
     .accountable-facility {
-      top: 40px;    left: 140px;   width: 80px;
+      top: 40px;    
+      left: 140px;   
+      width: 80px;
     }
     .pilot-report-type {
-      top: 40px;    left: 413px;  width: 68px;
+      top: 40px;    
+      left: 413px;  
+      width: 68px;
     }
     .override-validation {
-      top: 54px;    left: 290px;  /* just an example checkbox */
+      top: 54px;    
+      left: 290px;  /* just an example checkbox */
     }
     .phenomena-location {
-      top: 74px;    left: 140px;   width: 230px;
+      top: 74px;    
+      left: 140px;   
+      width: 230px;
     }
     .phenomena-time {
-      top: 110px;    left: 144px;  width: 80px;
+      top: 110px;    
+      left: 144px;  
+      width: 80px;
     }
     .flight-level {
-      top: 108px;    left: 330px;  width: 50px;
+      top: 108px;    
+      left: 330px;  
+      width: 50px;
     }
     .aircraft-type {
-      top: 108px;    left: 498px;  width: 80px;
+      top: 108px;    
+      left: 498px;  
+      width: 80px;
     }
     .sky-condition {
-      top: 144px;   left: 144px;   width: 475px;
+      top: 144px;   
+      left: 144px;   
+      width: 475px;
     }
     .flight-visibility {
-      top: 178px;   left: 144px;   width: 475px;
+      top: 178px;   
+      left: 144px;   
+      width: 475px;
     }
     .temperature {
-      top: 212px;   left: 144px;   width: 475px;
+      top: 212px;   
+      left: 144px;   
+      width: 475px;
     }
     .wind-velocity {
-      top: 245px;   left: 144px;   width: 475px;
+      top: 245px;   
+      left: 144px;   
+      width: 475px;
     }
     .turbulence {
-      top: 280px;   left: 144px;   width: 475px;
+      top: 280px;   
+      left: 144px;   
+      width: 475px;
     }
     .icing {
-      top: 315px;   left: 144px;   width: 475px;
+      top: 315px;   
+      left: 144px;   
+      width: 475px;
     }
+    /* Turn pilot remarks into a textarea, give it more height */
     .pilot-remarks {
-      top: 350px;   left: 144px;   width: 475px;
+      top: 350px;   
+      left: 144px;   
+      width: 475px;
+      height: 60px; /* Adjust as needed for multi-line input */
     }
+    /* Also a textarea for braking action, with a little more height */
     .braking-action {
-      top: 400px;   left: 144px;   width: 475px;
+      top: 400px;   
+      left: 144px;   
+      width: 475px;
+      height: 50px; /* Adjust as needed */
     }
     .runway {
-      top: 480px;   left: 50px;   width: 60px;
+      top: 480px;   
+      left: 50px;   
+      width: 60px;
     }
     .runway-braking-action {
-      top: 480px;   left: 120px;  width: 100px;
+      top: 480px;   
+      left: 120px;  
+      width: 100px;
     }
     .runway-contaminant {
-      top: 480px;   left: 230px;  width: 100px;
+      top: 480px;   
+      left: 230px;  
+      width: 100px;
     }
     .runway-depth {
-      top: 480px;   left: 340px;  width: 50px;
+      top: 480px;   
+      left: 340px;  
+      width: 50px;
     }
     .taxiway {
-      top: 520px;   left: 50px;   width: 60px;
+      top: 520px;   
+      left: 50px;   
+      width: 60px;
     }
     .taxiway-braking-action {
-      top: 520px;   left: 120px;  width: 100px;
+      top: 520px;   
+      left: 120px;  
+      width: 100px;
     }
     .taxiway-contaminant {
-      top: 520px;   left: 230px;  width: 100px;
+      top: 520px;   
+      left: 230px;  
+      width: 100px;
     }
     .taxiway-depth {
-      top: 520px;   left: 340px;  width: 50px;
+      top: 520px;   
+      left: 340px;  
+      width: 50px;
     }
     .transmit-button {
-      top: 700px;   left: 280px;  width: 80px;
+      top: 700px;   
+      left: 280px;  
+      width: 80px;
     }
     .cancel-button {
-      top: 700px;   left: 380px;  width: 80px;
+      top: 700px;   
+      left: 380px;  
+      width: 80px;
     }
   </style>
 </head>
@@ -203,7 +257,7 @@
         placeholder="/WV"
       />
 
-      <!-- Turbulence /TB -->
+      <!-- 12) Turbulence /TB -->
       <input 
         type="text" 
         name="turbulence"
@@ -211,7 +265,7 @@
         placeholder="/TB"
       />
 
-      <!-- Icing /IC -->
+      <!-- 13) Icing /IC -->
       <input 
         type="text" 
         name="icing"
@@ -219,19 +273,79 @@
         placeholder="/IC"
       />
 
-      <!-- Pilot Remarks /RM -->
-      <input 
-        type="text" 
+      <!-- 14) Pilot Remarks /RM -->
+      <!-- REPLACED with textarea for multi-line input -->
+      <textarea
         name="pilotRemarks"
         class="form-field pilot-remarks"
         placeholder="/RM"
-      />
+      ></textarea>
 
-      <!-- Braking Action /BA -->
-      <input 
-        type="text" 
+      <!-- 15) Braking Action /BA -->
+      <!-- REPLACED with textarea for multi-line input -->
+      <textarea
         name="brakingAction"
         class="form-field braking-action"
         placeholder="/BA"
+      ></textarea>
+
+      <!-- 16) Braking Action Info: Runway -->
+      <input 
+        type="text"
+        name="runway"
+        class="form-field runway"
+        placeholder="Runway"
+      />
+      <input 
+        type="text"
+        name="runwayBrakingAction"
+        class="form-field runway-braking-action"
+        placeholder="Braking Action"
+      />
+      <input 
+        type="text"
+        name="runwayContaminant"
+        class="form-field runway-contaminant"
+        placeholder="Contaminant"
+      />
+      <input 
+        type="text"
+        name="runwayDepth"
+        class="form-field runway-depth"
+        placeholder="Depth"
       />
 
+      <!-- 17) Braking Action Info: Taxiway/Apron -->
+      <input 
+        type="text"
+        name="taxiway"
+        class="form-field taxiway"
+        placeholder="Taxiway/Apron"
+      />
+      <input 
+        type="text"
+        name="taxiwayBrakingAction"
+        class="form-field taxiway-braking-action"
+        placeholder="Braking Action"
+      />
+      <input 
+        type="text"
+        name="taxiwayContaminant"
+        class="form-field taxiway-contaminant"
+        placeholder="Contaminant"
+      />
+      <input 
+        type="text"
+        name="taxiwayDepth"
+        class="form-field taxiway-depth"
+        placeholder="Depth"
+      />
+
+      <!-- 18) Buttons -->
+      <button type="submit" class="form-field transmit-button">Transmit</button>
+      <button type="button" class="form-field cancel-button">Cancel</button>
+
+    </div>
+  </form>
+</body>
+</html>
