@@ -6,346 +6,245 @@
   <style>
     /* ========== CONTAINER STYLING ========== */
     .form-container {
-      /* Make sure these match your image dimensions */
       width: 692px;
       height: 754px;
       position: relative;
-      
-      /* Update with your actual image name/path */
       background: url("pirep.png") no-repeat;
       background-size: contain;
-      
-      margin: 0 auto; 
-      border: 1px solid #ccc; /* optional debug border */
+      margin: 0 auto;
+      border: none;
     }
 
-    /* ========== DEBUG STYLING FOR FIELDS (REMOVE LATER) ========== */
+    /* Ensure fields are transparent but still visible */
     .form-field {
       position: absolute;
       font-size: 14px;
-      
-      /* TEMPORARY: helps see the boxes while you align them */
-      background-color: rgba(255,255,255,0.7); 
-      border: 2px solid red; 
-      z-index: 10; 
-      padding: 2px;
-      box-sizing: border-box; /* helps with consistent sizing */
+      background-color: rgba(255, 255, 255, 0.3); /* Slight transparency to show labels */
+      border: 1px solid transparent; /* Keep text visible but not block labels */
+      z-index: 10;
+      box-sizing: border-box;
+      resize: none;
+      overflow: auto;
+      padding-left: 3.2ch;
     }
 
-    /* ========== EXAMPLE POSITIONS (ADJUST!) ========== */
+    /* Accountable Facility */
     .accountable-facility {
-      top: 40px;    
-      left: 140px;   
-      width: 80px;
+      padding-left: 0.8ch;
+      top: 40px; 
+      left: 140px;
+      width: 75px; 
+      height: 21px;
     }
+
+    /* Align text to the left for "Pilot Report Type" */
     .pilot-report-type {
-      top: 40px;    
-      left: 413px;  
+      top: 41px; 
+      left: 413px;
       width: 68px;
+      height: 21px;
+      text-align: left;
+      padding-left: 5px;
     }
-    .override-validation {
-      top: 54px;    
-      left: 290px;  /* just an example checkbox */
-    }
+
     .phenomena-location {
-      top: 74px;    
-      left: 140px;   
-      width: 230px;
+      top: 75px;   
+      left: 146px;
+      width: 233px; 
+      height: 19px;
     }
     .phenomena-time {
-      top: 110px;    
-      left: 144px;  
-      width: 80px;
+      top: 109px;  
+      left: 144px;
+      width: 82px; 
+      height: 18px;
     }
     .flight-level {
-      top: 108px;    
-      left: 330px;  
-      width: 50px;
+      top: 108px;  
+      left: 330px;
+      width: 70px;  /* Ensures space for 3 characters */
+      height: 21px;
     }
     .aircraft-type {
-      top: 108px;    
-      left: 498px;  
-      width: 80px;
+      top: 108px;  
+      left: 498px;
+      width: 88px; 
+      height: 21px;
     }
     .sky-condition {
-      top: 144px;   
-      left: 144px;   
-      width: 475px;
+      top: 143px;  
+      left: 144px;
+      width: 480px; 
+      height: 20px;
     }
     .flight-visibility {
-      top: 178px;   
-      left: 144px;   
-      width: 475px;
+      padding-left: 3.6ch;
+      top: 177px;  
+      left: 144px;
+      width: 480px; 
+      height: 20px;
     }
     .temperature {
-      top: 212px;   
-      left: 144px;   
-      width: 475px;
+      top: 211px;  
+      left: 144px;
+      width: 480px; 
+      height: 20px;
     }
     .wind-velocity {
-      top: 245px;   
-      left: 144px;   
-      width: 475px;
+      padding-left: 3.6ch;
+      top: 245px;  
+      left: 144px;
+      width: 480px; 
+      height: 20px;
     }
     .turbulence {
-      top: 280px;   
-      left: 144px;   
-      width: 475px;
+      top: 280px;  
+      left: 144px;
+      width: 480px; 
+      height: 20px;
     }
     .icing {
-      top: 315px;   
-      left: 144px;   
-      width: 475px;
+      padding-left: 2.7ch;
+      top: 314px;  
+      left: 144px;
+      width: 480px; 
+      height: 20px;
     }
-    /* Turn pilot remarks into a textarea, give it more height */
     .pilot-remarks {
-      top: 350px;   
-      left: 144px;   
-      width: 475px;
-      height: 60px; /* Adjust as needed for multi-line input */
+      top: 348px;  
+      left: 144px;
+      width: 480px; 
+      height: 33px;
     }
-    /* Also a textarea for braking action, with a little more height */
     .braking-action {
-      top: 400px;   
-      left: 144px;   
-      width: 475px;
-      height: 50px; /* Adjust as needed */
+      top: 397px;  
+      left: 144px;
+      width: 480px; 
+      height: 33px;
     }
-    .runway {
-      top: 480px;   
-      left: 50px;   
-      width: 60px;
+
+    /* Transmit Box - Next to Runway Field */
+    .transmit-box {
+      position: absolute;
+      top: 590px;  /* Adjusted next to Runway field */
+      left: 505px; /* Positioned to the right */
+      width: 75px; /* Same as Accountable Facility */
+      height: 21px; /* Same as Accountable Facility */
+      border: 2px solid red;
+      text-align: center;
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: bold;
+      color: black;
+      background-color: white;
+      display: none; /* Initially hidden */
+      cursor: pointer; /* Indicate it's clickable */
     }
-    .runway-braking-action {
-      top: 480px;   
-      left: 120px;  
-      width: 100px;
-    }
-    .runway-contaminant {
-      top: 480px;   
-      left: 230px;  
-      width: 100px;
-    }
-    .runway-depth {
-      top: 480px;   
-      left: 340px;  
-      width: 50px;
-    }
-    .taxiway {
-      top: 520px;   
-      left: 50px;   
-      width: 60px;
-    }
-    .taxiway-braking-action {
-      top: 520px;   
-      left: 120px;  
-      width: 100px;
-    }
-    .taxiway-contaminant {
-      top: 520px;   
-      left: 230px;  
-      width: 100px;
-    }
-    .taxiway-depth {
-      top: 520px;   
-      left: 340px;  
-      width: 50px;
-    }
-    .transmit-button {
-      top: 700px;   
-      left: 280px;  
-      width: 80px;
-    }
-    .cancel-button {
-      top: 700px;   
-      left: 380px;  
-      width: 80px;
+
+    /* Show Transmit Box when form is correctly filled */
+    .transmit-box.complete {
+      display: block;
     }
   </style>
 </head>
 <body>
-  <!-- Example form. You can adjust action/method if you want server submission -->
-  <form action="#" method="POST">
+  <form id="pirepForm">
     <div class="form-container">
-      
-      <!-- 1) Accountable Facility -->
-      <input 
-        type="text"
-        name="accountableFacility"
-        class="form-field accountable-facility"
-        placeholder="Accountable Facility"
-      />
+      <!-- Accountable Facility -->
+      <textarea name="accountableFacility" class="form-field accountable-facility"></textarea>
 
-      <!-- 2) Pilot Report Type -->
-      <select 
-        name="pilotReportType"
-        class="form-field pilot-report-type"
-      >
-        <option value="UA">UA</option>
+      <!-- Pilot Report Type -->
+      <select name="pilotReportType" class="form-field pilot-report-type">
+        <option value="UA" selected>UA</option>
         <option value="UUA">UUA</option>
       </select>
 
-      <!-- 3) Override Validation (checkbox) -->
-      <input 
-        type="checkbox"
-        name="overrideValidation"
-        class="form-field override-validation"
-        title="Override Validation"
-      />
+      <!-- Phenomena Location -->
+      <textarea name="phenomenaLocation" class="form-field phenomena-location"></textarea>
 
-      <!-- 4) Phenomena Location /OV -->
-      <input 
-        type="text"
-        name="phenomenaLocation"
-        class="form-field phenomena-location"
-        placeholder="/OV"
-      />
+      <!-- Phenomena Time -->
+      <textarea name="phenomenaTime" class="form-field phenomena-time"></textarea>
 
-      <!-- 5) Phenomena Time /TM -->
-      <input 
-        type="text"
-        name="phenomenaTime"
-        class="form-field phenomena-time"
-        placeholder="/TM"
-      />
+      <!-- Flight Level -->
+      <textarea name="flightLevel" class="form-field flight-level" maxlength="3"></textarea>
 
-      <!-- 6) Flight Level /FL -->
-      <input 
-        type="text"
-        name="flightLevel"
-        class="form-field flight-level"
-        placeholder="/FL"
-      />
+      <!-- Aircraft Type -->
+      <textarea name="aircraftType" class="form-field aircraft-type"></textarea>
 
-      <!-- 7) Aircraft Type /TP -->
-      <input 
-        type="text"
-        name="aircraftType"
-        class="form-field aircraft-type"
-        placeholder="/TP"
-      />
+      <!-- Sky Condition -->
+      <textarea name="skyCondition" class="form-field sky-condition"></textarea>
 
-      <!-- 8) Sky Condition /SK -->
-      <input 
-        type="text"
-        name="skyCondition"
-        class="form-field sky-condition"
-        placeholder="/SK"
-      />
+      <!-- Flight Visibility -->
+      <textarea name="flightVisibility" class="form-field flight-visibility"></textarea>
 
-      <!-- 9) Flight Visibility /WX -->
-      <input 
-        type="text"
-        name="flightVisibility"
-        class="form-field flight-visibility"
-        placeholder="/WX"
-      />
+      <!-- Temperature -->
+      <textarea name="temperature" class="form-field temperature"></textarea>
 
-      <!-- 10) Temperature /TA -->
-      <input 
-        type="text"
-        name="temperature"
-        class="form-field temperature"
-        placeholder="/TA"
-      />
+      <!-- Wind Velocity -->
+      <textarea name="windVelocity" class="form-field wind-velocity"></textarea>
 
-      <!-- 11) Wind Velocity /WV -->
-      <input 
-        type="text" 
-        name="windVelocity"
-        class="form-field wind-velocity"
-        placeholder="/WV"
-      />
+      <!-- Turbulence -->
+      <textarea name="turbulence" class="form-field turbulence"></textarea>
 
-      <!-- 12) Turbulence /TB -->
-      <input 
-        type="text" 
-        name="turbulence"
-        class="form-field turbulence"
-        placeholder="/TB"
-      />
+      <!-- Icing -->
+      <textarea name="icing" class="form-field icing"></textarea>
 
-      <!-- 13) Icing /IC -->
-      <input 
-        type="text" 
-        name="icing"
-        class="form-field icing"
-        placeholder="/IC"
-      />
+      <!-- Pilot Remarks -->
+      <textarea name="pilotRemarks" class="form-field pilot-remarks"></textarea>
 
-      <!-- 14) Pilot Remarks /RM -->
-      <!-- REPLACED with textarea for multi-line input -->
-      <textarea
-        name="pilotRemarks"
-        class="form-field pilot-remarks"
-        placeholder="/RM"
-      ></textarea>
+      <!-- Braking Action -->
+      <textarea name="brakingAction" class="form-field braking-action"></textarea>
 
-      <!-- 15) Braking Action /BA -->
-      <!-- REPLACED with textarea for multi-line input -->
-      <textarea
-        name="brakingAction"
-        class="form-field braking-action"
-        placeholder="/BA"
-      ></textarea>
-
-      <!-- 16) Braking Action Info: Runway -->
-      <input 
-        type="text"
-        name="runway"
-        class="form-field runway"
-        placeholder="Runway"
-      />
-      <input 
-        type="text"
-        name="runwayBrakingAction"
-        class="form-field runway-braking-action"
-        placeholder="Braking Action"
-      />
-      <input 
-        type="text"
-        name="runwayContaminant"
-        class="form-field runway-contaminant"
-        placeholder="Contaminant"
-      />
-      <input 
-        type="text"
-        name="runwayDepth"
-        class="form-field runway-depth"
-        placeholder="Depth"
-      />
-
-      <!-- 17) Braking Action Info: Taxiway/Apron -->
-      <input 
-        type="text"
-        name="taxiway"
-        class="form-field taxiway"
-        placeholder="Taxiway/Apron"
-      />
-      <input 
-        type="text"
-        name="taxiwayBrakingAction"
-        class="form-field taxiway-braking-action"
-        placeholder="Braking Action"
-      />
-      <input 
-        type="text"
-        name="taxiwayContaminant"
-        class="form-field taxiway-contaminant"
-        placeholder="Contaminant"
-      />
-      <input 
-        type="text"
-        name="taxiwayDepth"
-        class="form-field taxiway-depth"
-        placeholder="Depth"
-      />
-
-      <!-- 18) Buttons -->
-      <button type="submit" class="form-field transmit-button">Transmit</button>
-      <button type="button" class="form-field cancel-button">Cancel</button>
-
+      <!-- New Transmit Box Next to Runway -->
+      <div id="transmitBox" class="transmit-box" onclick="newPilotReport()">Transmit</div>
     </div>
   </form>
+
+  <script>
+    function checkCompletion() {
+      const requiredValues = {
+        accountableFacility: "ANC",
+        pilotReportType: "UA",
+        phenomenaLocation: "TED230020",
+        phenomenaTime: "1604",
+        flightLevel: "070",
+        aircraftType: "B744",
+        turbulence: "NEG",
+        icing: "NEG",
+        pilotRemarks: "CLEAR"
+      };
+
+      let allCorrect = true;
+
+      Object.keys(requiredValues).forEach(field => {
+        let inputField = document.querySelector(`[name="${field}"]`);
+        if (!inputField) return;
+        if (inputField.value.trim().toUpperCase() !== requiredValues[field]) {
+          allCorrect = false;
+        }
+      });
+
+      let transmitBox = document.getElementById("transmitBox");
+      if (allCorrect) {
+        transmitBox.classList.add("complete");
+      } else {
+        transmitBox.classList.remove("complete");
+      }
+    }
+
+    function newPilotReport() {
+      // Clears the form but keeps dropdowns unchanged
+      document.querySelectorAll(".form-field").forEach(field => {
+        if (field.tagName !== "SELECT") {
+          field.value = "";
+        }
+      });
+      document.getElementById("transmitBox").classList.remove("complete");
+    }
+
+    document.querySelectorAll(".form-field").forEach(field => {
+      field.addEventListener("input", checkCompletion);
+    });
+  </script>
 </body>
 </html>
