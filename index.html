@@ -145,6 +145,17 @@
     .transmit-box.complete {
       display: block;
     }
+
+    /* New Output Box */
+    .output-box {
+  margin-top: -75px;
+  padding: 0;
+  font-family: monospace;
+  font-size: 32px;
+  font-style: italic;
+  white-space: pre-wrap; /* Preserve line breaks */
+}
+
   </style>
 </head>
 <body>
@@ -200,6 +211,9 @@
     </div>
   </form>
 
+  <!-- Output Display -->
+  <div id="outputBox" class="output-box" style="display: none;"></div>
+
   <script>
     function checkCompletion() {
       const requiredValues = {
@@ -233,7 +247,27 @@
     }
 
     function newPilotReport() {
-      // Clears the form but keeps dropdowns unchanged
+      // Format the PIREP output based on the form values
+      const pirepData = {
+        accountableFacility: "ANC",
+        pilotReportType: "UA",
+        phenomenaLocation: "TED230020",
+        phenomenaTime: "1604",
+        flightLevel: "070",
+        aircraftType: "B744",
+        turbulence: "NEG",
+        icing: "NEG",
+        pilotRemarks: "CLEAR"
+      };
+
+      const pirepString = `${pirepData.accountableFacility} ${pirepData.pilotReportType} /OV ${pirepData.phenomenaLocation}/TM ${pirepData.phenomenaTime}/FL${pirepData.flightLevel}/TP ${pirepData.aircraftType}/TB ${pirepData.turbulence}/IC ${pirepData.icing}/RM ${pirepData.pilotRemarks}`;
+
+      // Display the formatted PIREP
+      const outputBox = document.getElementById("outputBox");
+      outputBox.style.display = 'block';
+      outputBox.textContent = pirepString;
+
+      // Clear the form but keep dropdowns unchanged
       document.querySelectorAll(".form-field").forEach(field => {
         if (field.tagName !== "SELECT") {
           field.value = "";
